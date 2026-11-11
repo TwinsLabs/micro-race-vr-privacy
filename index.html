@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Política de Privacidade — Micro Race VR</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 760px; margin: 2.5em auto; padding: 0 1.2em; line-height: 1.6; color: #1a1a1a; }
+h1 { font-size: 1.7em; } h2 { font-size: 1.25em; margin-top: 1.6em; } h3 { font-size: 1.05em; }
+a { color: #0b5fff; } code { background: #f2f2f2; padding: 0 .25em; border-radius: 3px; }
+.lang { text-align: right; font-size: .9em; }
+</style>
+</head>
+<body>
+<p class="lang"><a href="en.html">English version</a></p>
+<p><strong>Última atualização:</strong> 10 de novembro de 2026</p>
+<p><strong>Editor:</strong> Elialber Lopes Ferreira dos Santos (Twins Labs)<br><strong>Aplicativo:</strong> Micro Race VR<br><strong>Plataforma:</strong> Meta Quest (Quest 3 e Quest 3S)<br><strong>Pacote Android:</strong> <code>com.twinslabs.microracevr</code><br><strong>App ID da Meta:</strong> 1374341312438904</p>
+<p>Esta Política de Privacidade explica quais dados o Micro Race VR trata, para que servem, com quem são compartilhados e quais são os seus direitos. Se você não concordar com esta política, não use o jogo.</p>
+<h2>1. Quem somos</h2>
+<p>O Micro Race VR é um jogo de corrida em realidade virtual, vendido na Meta Horizon Store, desenvolvido por Elialber Lopes Ferreira dos Santos (Twins Labs). Para assuntos de privacidade, inclusive pedidos de acesso ou exclusão, use: <strong>elialberlopes@gmail.com</strong>.</p>
+<h2>2. O que o jogo faz</h2>
+<p>Você dirige carrinhos de brinquedo em dioramas de mesa (por exemplo, Café da Manhã), em modos locais: corrida avulsa, contra o relógio e campeonato. Não há multijogador, chat, voz, anúncios nem compras dentro do aplicativo. O único recurso online no lançamento é o <strong>ranking de melhores voltas</strong> operado pela plataforma da Meta, e somente para contas Teen ou Adult.</p>
+<h2>3. Quais dados tratamos</h2>
+<h3>3.1 Dados da conta Meta (plataforma)</h3>
+<p>Quando você joga no Quest com uma conta Meta, o jogo usa o <strong>Meta Platform SDK</strong> oficial para:</p>
+<ul>
+<li><strong>Verificar a licença (entitlement):</strong> confirmar que a sua conta pode usar o aplicativo.</li>
+<li><strong>Grupo etário (User Age Group):</strong> após essa verificação, o jogo chama uma vez por sessão a API <code>UserAgeCategory.Get()</code> e guarda o resultado <strong>apenas na memória</strong> (Child, Teen, Adult ou Unknown). Essa informação não é gravada no save local nem enviada a servidores nossos.</li>
+<li><strong>Identificador de usuário da Meta (User ID):</strong> o SDK associa o tempo enviado ao ranking à conta logada. Ao ler o ranking, o jogo recebe o identificador do usuário de cada entrada e o usa só para reconhecer a <strong>sua</strong> posição. Esse identificador <strong>não é gravado</strong> no progresso local.</li>
+<li><strong>Perfil de usuário (User Profile):</strong> a Meta exige essa permissão para leaderboards globais. As respostas do SDK podem incluir nome de exibição ou alias. <strong>O jogo, no código atual, não exibe nomes nem fotos de perfil</strong>; na tela de resultado aparece só o seu lugar no ranking e o melhor tempo online. Não chamamos <code>Users.GetLoggedInUser</code> e não pedimos lista de amigos.</li>
+</ul>
+<p>O ranking em si (tempo da melhor volta, posição e associação à conta Meta) fica nos <strong>servidores da Meta</strong>, não nos nossos.</p>
+<h3>3.2 Dados que ficam só no headset (save local)</h3>
+<p>O jogo grava arquivos JSON no armazenamento do aplicativo no dispositivo (<code>Application.persistentDataPath</code> do Unity). O backup automático do Android está desativado (<code>allowBackup=false</code>). Não usamos PlayerPrefs para o progresso. Esses arquivos <strong>não são enviados</strong> à Meta nem a terceiros:</p>
+<ul>
+<li><code>player-progress.json</code>: pistas e copas desbloqueadas, resultados (posição, estrelas, melhor volta), personalização de carros (pintura, rodas), selos/créditos locais, recibos de recompensa e, se houver, o campeonato em andamento.</li>
+<li><code>game-settings.json</code>: volume, câmera, conforto (vinheta, giro rápido, modo sentado), esquema de controle, assistências e dificuldade.</li>
+<li><code>championship-series.json</code>: estado auxiliar do campeonato.</li>
+<li>Pasta <code>ghosts/</code>: gravação local da sua melhor volta (pista, carro, tempo e poses do carrinho). O ghost <strong>não é enviado</strong> a outros jogadores nem à Meta.</li>
+</ul>
+<p>Não há no jogo, hoje, um botão de “apagar meus dados”. Desinstalar o aplicativo apaga esses arquivos locais. Os tempos já enviados ao ranking da Meta <strong>não</strong> são apagados só com a desinstalação; para isso, escreva para <strong>elialberlopes@gmail.com</strong>.</p>
+<h3>3.3 O que não coletamos</h3>
+<p>Pelo código e pelas configurações atuais:</p>
+<ul>
+<li>não há anúncios, SDK de publicidade nem identificador de anúncio usado pelo jogo;</li>
+<li>Unity Analytics, Unity Ads, Unity Purchasing, relatórios de crash e performance da Unity Cloud estão desligados;</li>
+<li>não há analytics ou telemetria de produto enviada a um servidor nosso (o buffer de sessão existe só em memória e não é usado no jogo);</li>
+<li>o registro de desempenho (<code>PerfLogger</code>, prefixo <code>[MR_PERF]</code>) só existe em builds de desenvolvimento e no Editor; em builds de lançamento não há callbacks nem buffers;</li>
+<li>não usamos microfone, câmera, passthrough, rastreamento de mãos, face, olhos ou corpo;</li>
+<li>não há chat, voz, convites, salas, matchmaking nem compartilhamento de localização;</li>
+<li>não há compras dentro do aplicativo (IAP); a moeda de selos é só local;</li>
+<li>o jogo não faz chamadas HTTP próprias para servidores da Twins Labs (a rede é a do SDK da Meta para entitlement, idade e ranking).</li>
+</ul>
+<p>O SDK da Meta e o sistema do Quest podem enviar à Meta telemetria de plataforma (por exemplo, o identificador de projeto de telemetria que o próprio SDK inclui no manifesto). Isso é operado pela Meta, não por um serviço nosso.</p>
+<p>Em <strong>builds de desenvolvimento</strong> (não na versão de loja), um teste interno opcional pode gravar um tempo de verificação no ranking <code>MR_ONLINE_VERIFICATION</code> e um arquivo técnico em <code>online-check/</code>. Isso não faz parte da experiência do jogador na versão de lançamento.</p>
+<h2>4. Para que usamos os dados</h2>
+<ul>
+<li>prestar o jogo no seu dispositivo (progresso, ajustes, ghosts e campeonato locais);</li>
+<li>verificar que a sua conta tem direito de usar o aplicativo;</li>
+<li>aplicar a política de idades mistas (Mixed Ages): contas Child ou com idade desconhecida continuam jogando todos os modos locais, mas <strong>não enviam nem leem</strong> rankings;</li>
+<li>gravar e exibir o ranking de melhores voltas para contas Teen e Adult (tempo e posição).</li>
+</ul>
+<p>Não usamos esses dados para publicidade, perfilamento comercial ou venda a terceiros.</p>
+<h2>5. Compartilhamento</h2>
+<p>Não vendemos dados pessoais. O único destinatário operacional, além de você no próprio headset, é a <strong>Meta Platforms</strong>, na medida em que o entitlement, o grupo etário e os leaderboards rodam na plataforma Meta Horizon. Não integramos analíticos, anúncios, crash reporting ou redes sociais de terceiros.</p>
+<p>Autoridades públicas só receberiam dados se a lei aplicável o exigisse.</p>
+<h2>6. Retenção</h2>
+<ul>
+<li><strong>Save, ajustes, campeonato e ghosts locais:</strong> permanecem no headset enquanto o aplicativo estiver instalado, ou até serem substituídos pelo próprio jogo. A desinstalação os remove.</li>
+<li><strong>Grupo etário:</strong> só na memória da sessão; some ao fechar o aplicativo.</li>
+<li><strong>Identificador da Meta usado no ranking da sessão:</strong> não é persistido no save local.</li>
+<li><strong>Tempos do ranking:</strong> ficam na plataforma da Meta segundo as regras e o período de retenção da Meta. Podemos pedir a remoção da associação à sua conta se você solicitar pelo e-mail abaixo.</li>
+</ul>
+<h2>7. Crianças e público Mixed Ages</h2>
+<p>O público-alvo documentado do jogo é a partir de <strong>10 anos</strong>. Na loja da Meta, a classificação pretendida é <strong>Mixed Ages</strong> (10–12 e 13+). Aplicativos da plataforma Meta Horizon não se destinam a menores de 10 anos.</p>
+<p>Para contas classificadas como criança (Child) ou com idade desconhecida (Unknown), o jogo <strong>não envia tempos, não lê o ranking e não encaminha identificadores para esse fim</strong>. Os modos locais permanecem disponíveis. Não exibimos anúncios e não fazemos rastreamento de publicidade de terceiros.</p>
+<p>O grupo etário vem da conta Meta, não de uma pergunta feita pelo jogo. Se a classificação etária ou o Data Use Checkup ainda não estiverem ativos no painel da Meta, a API pode devolver Unknown e o ranking online fica indisponível até isso ser resolvido.</p>
+<h2>8. Seus direitos (LGPD e GDPR)</h2>
+<p>Conforme a lei aplicável no seu país (incluindo a Lei Geral de Proteção de Dados no Brasil e o GDPR no Espaço Econômico Europeu e no Reino Unido), você pode ter direito a:</p>
+<ul>
+<li>confirmar se tratamos dados seus e acessá-los;</li>
+<li>corrigir dados incompletos ou desatualizados;</li>
+<li>pedir a exclusão;</li>
+<li>pedir a portabilidade, quando couber;</li>
+<li>limitar ou opor-se a determinado tratamento, quando couber;</li>
+<li>retirar um consentimento, se o tratamento se basear nele, sem prejudicar o uso anterior;</li>
+<li>apresentar reclamação a uma autoridade de proteção de dados (no Brasil, a ANPD).</li>
+</ul>
+<p>Para exercer esses direitos, escreva para <strong>elialberlopes@gmail.com</strong> e descreva o pedido. Para dados que só existem no headset, a desinstalação do aplicativo é o meio imediato de apagá-los. Para dados de ranking na Meta, podemos precisar da cooperação da Meta e de informações suficientes para localizar a conta, sem pedir mais dados do que o necessário.</p>
+<h2>9. Pedido de exclusão</h2>
+<p>Envie um e-mail para <strong>elialberlopes@gmail.com</strong> com o assunto “Exclusão de dados — Micro Race VR”. Informe que o pedido se refere a este aplicativo e, se possível, o nome da conta Meta usada no Quest. Não pediremos senha. Vamos confirmar o recebimento e indicar o que foi apagado no que estiver sob nosso controle, e o que precisa ser tratado na plataforma da Meta.</p>
+<h2>10. Alterações</h2>
+<p>Podemos atualizar esta política se o jogo passar a coletar ou usar dados de outra forma (por exemplo, se passarmos a exibir nomes no ranking). A data no topo será atualizada, e a versão vigente estará nesta URL. Se a mudança for relevante, procuraremos avisar de modo razoável (por exemplo, nas notas da loja).</p>
+<h2>11. Contato</h2>
+<p>Elialber Lopes Ferreira dos Santos (Twins Labs)<br>Micro Race VR<br>E-mail: <strong>elialberlopes@gmail.com</strong></p>
+<p>Para a política da própria plataforma Meta (conta, pagamentos da loja, idade da conta), consulte também os termos e a política de privacidade da Meta.</p>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Micro Race VR</title>
+<style>
+body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 760px; margin: 2.5em auto; padding: 0 1.2em; line-height: 1.6; color: #1a1a1a; }
+h1 { font-size: 1.7em; } h2 { font-size: 1.25em; margin-top: 1.6em; } h3 { font-size: 1.05em; }
+a { color: #0b5fff; } code { background: #f2f2f2; padding: 0 .25em; border-radius: 3px; }
+.lang { text-align: right; font-size: .9em; }
+</style>
+</head>
+<body>
+<p class="lang"><a href="index.html">Versão em português</a></p>
+<p><strong>Last updated:</strong> November 10, 2026</p>
+<p><strong>Publisher:</strong> Elialber Lopes Ferreira dos Santos (Twins Labs)<br><strong>App:</strong> Micro Race VR<br><strong>Platform:</strong> Meta Quest (Quest 3 and Quest 3S)<br><strong>Android package:</strong> <code>com.twinslabs.microracevr</code><br><strong>Meta App ID:</strong> 1374341312438904</p>
+<p>This Privacy Policy explains what data Micro Race VR processes, why we process it, who it is shared with, and what rights you have. If you do not agree with this policy, please do not use the game.</p>
+<h2>1. Who we are</h2>
+<p>Micro Race VR is a virtual-reality racing game sold on the Meta Horizon Store and developed by Elialber Lopes Ferreira dos Santos (Twins Labs). For privacy questions, including access or deletion requests, contact: <strong>elialberlopes@gmail.com</strong>.</p>
+<h2>2. What the game does</h2>
+<p>You drive toy cars on tabletop dioramas (for example, Breakfast) in local modes: single race, time trial, and cup championship. There is no multiplayer, chat, voice, advertising, or in-app purchase. The only online feature at launch is <strong>fastest-lap leaderboards</strong> operated by the Meta platform, and only for Teen or Adult accounts.</p>
+<h2>3. Data we process</h2>
+<h3>3.1 Meta account data (platform)</h3>
+<p>When you play on a Quest headset signed into a Meta account, the game uses the official <strong>Meta Platform SDK</strong> to:</p>
+<ul>
+<li><strong>Check entitlement:</strong> confirm that your account is allowed to use the app.</li>
+<li><strong>Age group (User Age Group):</strong> after entitlement succeeds, the game calls <code>UserAgeCategory.Get()</code> once per session and keeps the result <strong>in memory only</strong> (Child, Teen, Adult, or Unknown). It is not written to the local save and is not sent to any server we operate.</li>
+<li><strong>Meta user identifier (User ID):</strong> the SDK associates a submitted leaderboard time with the signed-in account. When reading the board, the game receives the user identifier on each entry and uses it only to recognise <strong>your</strong> rank. That identifier is <strong>not stored</strong> in local progress.</li>
+<li><strong>User Profile:</strong> Meta requires this grant for global leaderboards. SDK responses may include a display name or alias. <strong>The current game code does not show names or profile photos</strong>; the results screen shows only your rank and the best online time. We do not call <code>Users.GetLoggedInUser</code> and we do not request friends lists.</li>
+</ul>
+<p>Leaderboard records themselves (fastest-lap time, rank, and the link to the Meta account) are stored on <strong>Meta’s servers</strong>, not ours.</p>
+<h3>3.2 Data that stays on the headset (local save)</h3>
+<p>The game writes JSON files in the app’s on-device storage (Unity’s <code>Application.persistentDataPath</code>). Android auto-backup is disabled (<code>allowBackup=false</code>). We do not use PlayerPrefs for progress. These files are <strong>not uploaded</strong> to Meta or to third parties:</p>
+<ul>
+<li><code>player-progress.json</code>: unlocked tracks and cups, results (position, stars, best lap), car customization (paint, wheels), local stamps/credits, reward receipts, and any in-progress cup.</li>
+<li><code>game-settings.json</code>: volume, camera, comfort options (vignette, snap turn, sitting height), control scheme, assists, and difficulty.</li>
+<li><code>championship-series.json</code>: auxiliary championship state.</li>
+<li><code>ghosts/</code> folder: a local recording of your best lap (track, car, time, and car poses). Ghosts are <strong>not</strong> sent to other players or to Meta.</li>
+</ul>
+<p>The game does not currently offer an in-app “delete my data” button. Uninstalling the app removes these local files. Times already submitted to Meta leaderboards are <strong>not</strong> removed by uninstalling; email <strong>elialberlopes@gmail.com</strong> to request that.</p>
+<h3>3.3 What we do not collect</h3>
+<p>Based on the current code and project settings:</p>
+<ul>
+<li>there are no ads, advertising SDKs, or advertising identifiers used by the game;</li>
+<li>Unity Analytics, Unity Ads, Unity Purchasing, and Unity Cloud crash/performance reporting are disabled;</li>
+<li>we do not send product analytics or telemetry to a server we operate (a session buffer exists in memory only and is unused in the shipping game);</li>
+<li>the performance logger (<code>PerfLogger</code>, <code>[MR_PERF]</code> prefix) exists only in development builds and the Editor; release players have no callbacks or buffers;</li>
+<li>we do not use the microphone, camera, passthrough, or hand, face, eye, or body tracking;</li>
+<li>there is no chat, voice, invites, rooms, matchmaking, or location sharing;</li>
+<li>there are no in-app purchases; stamp currency is local only;</li>
+<li>the game makes no first-party HTTP calls to Twins Labs servers (network use is the Meta SDK for entitlement, age group, and leaderboards).</li>
+</ul>
+<p>The Meta SDK and the Quest system may send platform diagnostic telemetry to Meta (for example, the telemetry project identifier that the SDK itself adds to the app manifest). That is operated by Meta, not by a service we run.</p>
+<p>In <strong>development builds</strong> only (not the store release), an optional internal check may write a verification time to the <code>MR_ONLINE_VERIFICATION</code> board and a technical file under <code>online-check/</code>. That is not part of the player experience in a release build.</p>
+<h2>4. Why we use the data</h2>
+<ul>
+<li>to run the game on your device (local progress, settings, ghosts, and championship state);</li>
+<li>to verify that your account is entitled to use the app;</li>
+<li>to apply the Mixed Ages policy: Child or unknown-age accounts can still play every local mode, but <strong>cannot submit to or read</strong> leaderboards;</li>
+<li>to record and show fastest-lap rankings for Teen and Adult accounts (time and rank).</li>
+</ul>
+<p>We do not use this data for advertising, commercial profiling, or sale to third parties.</p>
+<h2>5. Sharing</h2>
+<p>We do not sell personal data. The only operational recipient besides you on your own headset is <strong>Meta Platforms</strong>, to the extent that entitlement, age group, and leaderboards run on the Meta Horizon platform. We do not integrate third-party analytics, ads, crash reporting, or social networks.</p>
+<p>We would share data with public authorities only if applicable law required it.</p>
+<h2>6. Retention</h2>
+<ul>
+<li><strong>Local save, settings, championship data, and ghosts:</strong> stay on the headset while the app is installed, or until the game overwrites them. Uninstalling the app removes them.</li>
+<li><strong>Age group:</strong> session memory only; it is discarded when the app is closed.</li>
+<li><strong>Meta user identifier used for the session ranking:</strong> not persisted in the local save.</li>
+<li><strong>Leaderboard times:</strong> remain on Meta’s platform under Meta’s rules and retention period. If you ask us, we can request removal of the association with your account.</li>
+</ul>
+<h2>7. Children and Mixed Ages</h2>
+<p>The game’s documented audience starts at <strong>age 10</strong>. On the Meta Store, the intended age-group certification is <strong>Mixed Ages</strong> (ages 10–12 and 13+). Meta Horizon apps are not intended for children under 10.</p>
+<p>For accounts classified as Child, or whose age group is Unknown, the game <strong>does not submit times, read the leaderboard, or send identifiers for that purpose</strong>. All local modes remain available. We do not show ads and we do not use third-party advertising tracking.</p>
+<p>Age group comes from the Meta account, not from a question asked by the game. If age-group certification or the Data Use Checkup is not yet active on the Meta dashboard, the API may return Unknown and online leaderboards stay unavailable until that is resolved.</p>
+<h2>8. Your rights (LGPD and GDPR)</h2>
+<p>Depending on the law that applies where you live (including Brazil’s LGPD and the GDPR in the European Economic Area and the United Kingdom), you may have the right to:</p>
+<ul>
+<li>confirm whether we process your data and access it;</li>
+<li>correct incomplete or outdated data;</li>
+<li>request deletion;</li>
+<li>request portability, where applicable;</li>
+<li>restrict or object to certain processing, where applicable;</li>
+<li>withdraw consent if processing is based on consent, without affecting earlier lawful use;</li>
+<li>lodge a complaint with a data-protection authority (in Brazil, the ANPD).</li>
+</ul>
+<p>To exercise these rights, email <strong>elialberlopes@gmail.com</strong> and describe the request. For data that exists only on the headset, uninstalling the app is the immediate way to delete it. For leaderboard data held by Meta, we may need Meta’s cooperation and enough information to identify the account, without asking for more data than necessary.</p>
+<h2>9. Deletion requests</h2>
+<p>Email <strong>elialberlopes@gmail.com</strong> with the subject “Data deletion — Micro Race VR”. Say that the request concerns this app and, if you can, the Meta account name used on the Quest. We will not ask for your password. We will confirm receipt and explain what we can delete under our control and what must be handled on Meta’s platform.</p>
+<h2>10. Changes</h2>
+<p>We may update this policy if the game starts collecting or using data differently (for example, if we later display names on the leaderboard). The date at the top will change, and the current version will be at this URL. If a change is material, we will try to give reasonable notice (for example, in store release notes).</p>
+<h2>11. Contact</h2>
+<p>Elialber Lopes Ferreira dos Santos (Twins Labs)<br>Micro Race VR<br>Email: <strong>elialberlopes@gmail.com</strong></p>
+<p>For Meta’s own platform practices (your Meta account, store payments, and account age), please also see Meta’s terms and privacy policy.</p>
+</body>
+</html>
